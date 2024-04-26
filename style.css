@@ -1,5 +1,10 @@
 :root {
-   --primary-color:#22b5f9;
+    --primary-dark-color: #8739f9;
+    --primary-color: #37b9f170;
+    --primary-light-color: #f2f5f5;
+    --primary-text-color: #2f2b3f;
+    --label-color: #908e9b;
+    --light-text-color: #e1dfe9;
 }
 
 * {
@@ -8,41 +13,390 @@
     box-sizing: border-box;
     font-family: Platypi;
 }
+/* body */
+
 
 main {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 200;
 }
+
 ul {
-list-style-type: none;
+    list-style-type: none;
 
 }
 
 
 
 header {
-    
+
     width: 100%;
-    height: 90px;
+    height: 70px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: var(--primary-color);
+    border: 1px solid var(--primary-dark-color);
+    border-top: none;
     border-radius: 0 0 25px 25px;
-
+    gap: 10px;
+    padding: 10px;
+    backdrop-filter: blur(4px);
 }
 
-.header-title{
+.header-title {
+    color: var(--primary-text-color);
+    filter: drop-shadow(2px 2px 2px var(--light-text-color));
     font-size: 50px;
 }
 
+.header-logo {
+    fill: var(--primary-text-color);
+    filter: drop-shadow(2px 2px 2px var(--primary-light-color));
+}
+
+.header-logo:hover {
+    fill: var(--primary-light-color);
+}
+
 .search-button {
+    fill: var(--primary-text-color);
     color: transparent;
     background-color: transparent;
     border: none;
     cursor: pointer;
+    border-radius: 50%;
+    filter: drop-shadow(2px 2px 2px var(--primary-light-color));
 }
 
 .search-button:hover {
-    fill: rgb(59, 59, 2);
+    fill: var(--primary-light-color);
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+input {
+    background-color: transparent;
+    border: 2px solid var(--primary-dark-color);
+    border-radius: 15px;
+    height: 24px;
+    padding: 5px;
+    box-shadow: 2px 2px 2px black;
+}
+
+input::placeholder {
+    color: var(--primary-text-color);
+    font-size: 12px;
+}
+
+
+
+.city-title {
+    margin: 10px;
+    color: var(--light-text-color);
+    filter: drop-shadow(2px 2px 2px var(--primary-text-color));
+}
+
+.wrapper {
+    margin: 50px 0 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+}
+
+.wrapper-day {
+
+    height: 280px;
+    padding: 16px;
+    color: var(--primary-text-color);
+    background-color: var(--primary-color);
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--primary-dark-color);
+    box-shadow: 1px 5px 9px var(--label-color);
+
+    border-radius: 25px;
+    flex-basis: 30%;
+}
+
+.wrapper-day__title {
+    text-align: center;
+}
+
+.temp {
+    font-size: 30px;
+}
+
+.day-wind {
+    display: flex;
+    gap: 10px;
+}
+
+.day-temp {
+    display: flex;
+    gap: 20px;
+}
+
+.rise-time {
+    display: flex;
+    gap: 20px;
+}
+
+.weather-cond {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10;
+}
+
+.weather-cond span {
+    color: #180757;
+}
+
+.weather-icon {
+    width: 60px;
+    height: 60px;
+}
+
+.text-bold {
+    color: #790649;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.cloud1,
+.cloud2,
+.cloud3,
+.cloud4,
+.cloud5 {
+    width: 300px;
+    height: 200px;
+}
+
+.cloud1 {
+    
+    position: fixed;
+    top: 10%;
+    left: 15%;
+    z-index: -3;
+    animation: rect 6s ease-in-out infinite;
+
+}
+
+.cloud2 {
+    position: fixed;
+    top: 15%;
+    left: 30%;
+    z-index: -2;
+    animation: float 5s ease-in-out infinite;
+}
+
+.cloud3 {
+    position: fixed;
+    top: 18%;
+    left: 35%;
+    z-index: -1;
+    animation: float 4s ease-in-out infinite;
+}
+
+.cloud4 {
+    position: fixed;
+    top: 15%;
+    right: 30%;
+    z-index: -2;
+    animation: rect 6s ease-in-out infinite;
+}
+
+.cloud5 {
+    position: fixed;
+    top: 10%;
+    right: 15%;
+    z-index: -3;
+    animation: float 4.5s ease-in-out infinite;
+}
+
+.sun {
+    width: 150px;
+    height: 150px;
+    position: fixed;
+    top: 15%;
+    right: 45%;
+    z-index: -4;
+    animation: float 7s ease-in-out infinite;
+
+}
+
+footer {
+    width: 100%;
+    height: 50px;
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-dark-color);
+    border-bottom: none;
+   
+    gap: 10px;
+    padding: 10px;
+    backdrop-filter: blur(4px);
+}
+
+@keyframes float {
+    0% {
+        transform: translatey(0);
+    }
+
+    50% {
+        transform: translatey(5px);
+    }
+
+    100% {
+        transform: translatey(0);
+    }
+}
+
+@keyframes rect {
+    0% {
+        transform: translatey(0);
+    }
+
+    50% {
+        transform: translatey(10px);
+    }
+
+    100% {
+        transform: translatey(0);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper-day {
+        flex-basis: 45%;
+
+    }
+
+    .cloud1 {
+        top: 15%;
+        left: 30%;
+    }
+
+    .cloud2 {
+        top: 17%;
+        left: 35%;
+    }
+
+    .cloud3 {
+        top: 20%;
+        left: 40%;
+    }
+
+    .cloud4 {
+        top: 17%;
+        left: 45%;
+    }
+
+    .cloud5 {
+        top: 15%;
+        left: 50%;
+    }
+
+    .cloud1,
+    .cloud2,
+    .cloud3,
+    .cloud4,
+    .cloud5 {
+        width: 200px;
+        height: 100px;
+    }
+
+    .sun {
+        top: 15%;
+        left: 45%;
+        width: 100px;
+        height: 100px;
+    }
+
+    .header-title {
+        font-size: 30px;
+    }
+
+    input {
+        width: 100px;
+        
+    }
+    input::placeholder {
+        font-size: 10px;
+    }
+    .search-button{
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .header-title {
+        font-size: 20px;
+    }
+
+    .header-logo {
+        width: 30px;
+        height: 30px;
+    }
+
+    .wrapper-day {
+        flex-basis: content;
+    }
+
+    .cloud1 {
+        top: 12%;
+        left: 30%;
+    }
+
+    .cloud2 {
+        top: 14%;
+        left: 35%;
+    }
+
+    .cloud3 {
+        top: 17%;
+        left: 40%;
+    }
+
+    .cloud4 {
+        top: 14%;
+        left: 45%;
+    }
+
+    .cloud5 {
+        top: 12%;
+        left: 50%;
+    }
+
+    .cloud1,
+    .cloud2,
+    .cloud3,
+    .cloud4,
+    .cloud5 {
+        width: 150px;
+        height: 75px;
+    }
+
+    .sun {
+        top: 12%;
+        left: 45%;
+        width: 75px;
+        height: 75px;
+    }
+    input::placeholder {
+        font-size: 8px;
+    }
+}
+
+.body-rein {
+    background-image: url(/images/background_rain.jpg);
 }

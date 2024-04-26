@@ -10,31 +10,67 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>TheWeather</title>
   </head>
   <body>
     <header>
-        <a href="/">
-            <svg class="header-logo" width="50" height="50">
-                <use href="/images/icons-svg.svg#icon-sun_icon"></use>
-            </svg>
-        </a>
-      <h1 class="header-title">TheWhether.ua</h1>
-      <button type="button" class="search-button">
-        <svg width="50" height="50">
-            <use href="/images/icons-svg.svg#icon-search"></use>
+      <a href="/">
+        <svg class="header-logo" width="50" height="50">
+          <use href="/images/icons-svg.svg#icon-sun_icon"></use>
         </svg>
-      </button>
+      </a>
+      <h1 class="header-title">TheWeather.ua</h1>
+      <form id="search-form">
+        <input type="text" id="input" placeholder="Input city name" />
+        <button type="submit" class="search-button">
+          <svg width="30" height="30">
+            <use href="/images/icons-svg.svg#icon-search"></use>
+          </svg>
+        </button>
+      </form>
     </header>
+    <img class="cloud1 cloud"  src="" alt="cloud1" />
+    <img class="cloud2 cloud" src="" alt="cloud2" />
+    <img class="cloud3 cloud" src="" alt="cloud3" />
+    <img class="cloud4 cloud" src="" alt="cloud4" />
+    <img class="cloud5 cloud" src="" alt="cloud5" />
+    <img class="sun" src="./images/sun.png" alt="sun" />
     <main>
+      <div class="location" id="location">
+        <h2 class="city-title">Chornomorsk</h2>
+        <h3 class="city-title">Odeska oblast</h3>
+      </div>
       <div class="wrapper">
-        <div class="day dayid1"></div>
-        <div class="day dayid2"></div>
-        <div class="day dayid3"></div>
-        <div class="day dayid4"></div>
-        <div class="day dayid5"></div>
+        <article class="wrapper-day dayid1">
+          <h3 class="wrapper-day__title">Today</h3>
+          <div class="weather-cond" id="weather-cond">
+            <p class="temp">30 &deg C</p>
+            <span>Partly cloudly</span>
+            <img
+              class="weather-icon"
+              src="//cdn.weatherapi.com/weather/64x64/day/113.png"
+              alt=""
+            />
+          </div>
+          <div class="day-temp">
+            <p>Max: 25 &deg C</p>
+            <p>Min: 25 &deg C</p>
+          </div>
+          <div class="rise-time">
+            <p>Sunrise: 05:51 AM</p>
+            <p>Sunset: 05:51 AM</p>
+          </div>
+          <div class="day-wind">
+            <p>Wind speed: 10 km/h</p>
+            <p id="pres">Pressure: 1000 mm</p>
+          </div>
+        </article>
+        
       </div>
     </main>
-    <footer></footer>
+    <footer>
+      <p>Product by: <a href="https://www.instagram.com/v_dvortsov?igsh=cWdtemIwb2VxNjFp">v_dvortsov</a></p>
+    </footer>
   </body>
+  <script src="script.js"></script>
 </html>
