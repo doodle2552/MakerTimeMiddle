@@ -52,7 +52,7 @@ function displayWeatherData(weatherData) {
         article.className = `wrapper-day dayid${index + 1}`;
 
         const title = document.createElement('h3');
-        title.className = 'wrapper-day__title';
+        title.className = 'wrapper-day__title'; 
         title.textContent = index === 0 ? 'Today' : `${day.date}`;
 
         const weatherCondDiv = document.createElement('div');
