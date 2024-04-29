@@ -1,7 +1,4 @@
-window.addEventListener('load', function() {
-    const preloader = document.getElementById('preloader');
-    preloader.style.display = 'none'; 
-});
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const defaultCity = 'odesa';
@@ -50,6 +47,7 @@ function fetchWeatherData(city) {
             displayLocation(data.location);
             displayWeatherData(data);
             updateBackground(data.forecast.forecastday[0].day.condition.code);
+           
         })
         .catch(function (error) {
             alert('invalid city name or ' + error);
@@ -174,6 +172,10 @@ function updateBackground(conditionCode) {
     document.body.style.backgroundImage = `url(/images/${imageSet.background})`;
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundAttachment = 'fixed';
+    
 }
-
+window.addEventListener('load', function(){
+    const preloader = document.getElementById('preloader');
+    preloader.style.display = 'none';
+})
 
