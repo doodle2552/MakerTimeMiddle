@@ -7,12 +7,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Platypi:ital,wght@0,300..800;1,300..800&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
+
+      <link rel="icon" href="/images/droplet.svg" type="image/svg+xml">
     <link rel="stylesheet" href="style.css" />
     <title>TheWeather</title>
   </head>
   <body>
+    <div id="preloader" class="preloader">
+      <div class="spinner"></div>
+  </div>
     <header>
       <a href="/">
         <svg class="header-logo" width="50" height="50">
@@ -29,6 +33,42 @@
         </button>
       </form>
     </header>
+    <div class="dropdown">
+      <button id="city-select-btn" type="button" class="city-select-btn" aria-haspopup="listbox">
+        <svg width="30" height="30">
+            <use href="/images/icons-svg.svg#icon-menu"></use>
+        </svg>
+    </button>
+      <div class="dropdown-content hidden">
+          <a href="#" class="city-link" data-value="Kyiv">Kyiv</a>
+          <a href="#" class="city-link" data-value="Kharkiv">Kharkiv</a>
+          <a href="#" class="city-link" data-value="Odesa">Odesa</a>
+          <a href="#" class="city-link" data-value="dnipropetrovsk">Dnipro</a>
+          <a href="#" class="city-link" data-value="Donetsk">Donetsk</a>
+          <a href="#" class="city-link" data-value="Zaporozhye">Zaporizhzhia</a>
+          <a href="#" class="city-link" data-value="Lviv">Lviv</a>
+          <!-- <a href="#" class="city-link" data-value="krivoy rog">Kryvyi Rih</a> -->
+          <!-- <a href="#" class="city-link" data-value="Nikolaev">Mykolaiv</a> -->
+          <!-- <a href="#" class="city-link" data-value="Mariupol">Mariupol</a> -->
+          <a href="#" class="city-link" data-value="Luhansk">Luhansk</a>
+          <a href="#" class="city-link" data-value="Sevastopol">Sevastopol</a>
+          <a href="#" class="city-link" data-value="Vinnytsia">Vinnytsia</a>
+          <a href="#" class="city-link" data-value="Simferopol">Simferopol</a>
+          <a href="#" class="city-link" data-value="Kherson">Kherson</a>
+          <a href="#" class="city-link" data-value="Poltava">Poltava</a>
+          <a href="#" class="city-link" data-value="Chernihiv">Chernihiv</a>
+          <a href="#" class="city-link" data-value="Cherkasy">Cherkasy</a>
+          <!-- <a href="#" class="city-link" data-value="hmelnytskyi">Khmelnytskyi</a> -->
+          <a href="#" class="city-link" data-value="Zhytomyr">Zhytomyr</a>
+          <a href="#" class="city-link" data-value="Chernivtsi">Chernivtsi</a>
+          <a href="#" class="city-link" data-value="Sumy">Sumy</a>
+          <a href="#" class="city-link" data-value="Rivne">Rivne</a>
+          <a href="#" class="city-link" data-value="IvanoFrankovsk">Ivano-Frankivsk</a>
+          <a href="#" class="city-link" data-value="Ternopil">Ternopil</a>
+          <!-- <a href="#" class="city-link" data-value="Lutsk">Lutsk</a> -->
+          <a href="#" class="city-link" data-value="Uzhhorod">Uzhhorod</a>
+      </div>
+  </div>
     <img class="cloud1 cloud"  src="" alt="cloud1" />
     <img class="cloud2 cloud" src="" alt="cloud2" />
     <img class="cloud3 cloud" src="" alt="cloud3" />
@@ -37,39 +77,14 @@
     <img class="sun" src="./images/sun.png" alt="sun" />
     <main>
       <div class="location" id="location">
-        <h2 class="city-title">Chornomorsk</h2>
-        <h3 class="city-title">Odeska oblast</h3>
       </div>
       <div class="wrapper">
-        <article class="wrapper-day dayid1">
-          <h3 class="wrapper-day__title">Today</h3>
-          <div class="weather-cond" id="weather-cond">
-            <p class="temp">30 &deg C</p>
-            <span>Partly cloudly</span>
-            <img
-              class="weather-icon"
-              src="//cdn.weatherapi.com/weather/64x64/day/113.png"
-              alt=""
-            />
-          </div>
-          <div class="day-temp">
-            <p>Max: 25 &deg C</p>
-            <p>Min: 25 &deg C</p>
-          </div>
-          <div class="rise-time">
-            <p>Sunrise: 05:51 AM</p>
-            <p>Sunset: 05:51 AM</p>
-          </div>
-          <div class="day-wind">
-            <p>Wind speed: 10 km/h</p>
-            <p id="pres">Pressure: 1000 mm</p>
-          </div>
-        </article>
         
       </div>
     </main>
     <footer>
-      <p>Product by: <a href="https://www.instagram.com/v_dvortsov?igsh=cWdtemIwb2VxNjFp">v_dvortsov</a></p>
+      <div class="social"> <p><span>Product by:  </span></p> <a href="https://www.instagram.com/v_dvortsov?igsh=cWdtemIwb2VxNjFp" class="text-link"> v_dvortsov
+      </a></div>
     </footer>
   </body>
   <script src="script.js"></script>

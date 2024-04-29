@@ -1,13 +1,36 @@
+window.addEventListener('load', function() {
+    const preloader = document.getElementById('preloader');
+    preloader.style.display = 'none'; 
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     const defaultCity = 'odesa';
     fetchWeatherData(defaultCity);
+    const citySelectBtn = document.getElementById('city-select-btn');
+    const dropContent = document.querySelector('.dropdown-content');
+    const cityLink = document.querySelectorAll('.city-link');
     const cityForm = document.getElementById('search-form');
+
+    citySelectBtn.addEventListener('click', ()=>{
+        dropContent.classList.toggle('hidden');
+    })
+
+    cityLink.forEach(i=>{
+        i.addEventListener('click', function(e){
+            e.preventDefault();
+            const city = this.getAttribute('data-value');
+            fetchWeatherData(city);
+            dropContent.classList.toggle('hidden');
+        })
+    })
+
     cityForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const city = document.getElementById('input').value.trim();
-        if (city) {
-            fetchWeatherData(city);
-        } else {
+        const inputCity = document.getElementById('input').value.trim();
+        if (inputCity) {
+            fetchWeatherData(inputCity);
+        } 
+        else {
             alert('Input city name pls!');
         }
     })
@@ -17,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function fetchWeatherData(city) {
     const apiKey = '0f08f6b84ccb424699f111544242504'
-    const urlApi = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=10&aqi=no&alerts=no`;
+    const urlApi = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=14&aqi=no&alerts=no`;
 
     fetch(urlApi)
         .then(function (res) {
@@ -26,10 +49,10 @@ function fetchWeatherData(city) {
         .then(function (data) {
             displayLocation(data.location);
             displayWeatherData(data);
-            updateBackground(data.current.condition.code);
+            updateBackground(data.forecast.forecastday[0].day.condition.code);
         })
         .catch(function (error) {
-            alert('Error fetching wheather data');
+            alert('invalid city name or ' + error);
             console.error(error);
         })
 
@@ -53,7 +76,9 @@ function displayWeatherData(weatherData) {
 
         const title = document.createElement('h3');
         title.className = 'wrapper-day__title'; 
-        title.textContent = index === 0 ? 'Today' : `${day.date}`;
+        const date = new Date(day.date);
+        const options = { day: 'numeric', month: 'long' };
+        title.textContent = index === 0 ? 'Today' : date.toLocaleDateString('en-US', options);
 
         const weatherCondDiv = document.createElement('div');
         weatherCondDiv.className = 'weather-cond';
@@ -105,7 +130,7 @@ function updateBackground(conditionCode) {
         },
 
         1003: {
-            clouds: ["cloudly.png", "cloudly.png", "cloudly.png", "cloudly.png", "cloudly.png"],
+            clouds: ["clear.png", "clear.png", "clear.png", "clear.png", "clear.png"],
             sun: "sun.png",
             background: "background.jpg"
         },
@@ -136,9 +161,12 @@ function updateBackground(conditionCode) {
         }
     }
     const imageSet = weatherImages[conditionCode] || weatherImages['1000'];
+   
 
     document.querySelectorAll('.cloud').forEach((element, index) => {
         element.src = `./images/${imageSet.clouds[index]}`;
+        conditionCode == 1000 ? element.classList.add('hidden') : element.classList.remove('hidden');
+        
     });
     const sunImage = document.querySelector('.sun');
     sunImage.src = `./images/${imageSet.sun}`;
